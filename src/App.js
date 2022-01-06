@@ -1,13 +1,13 @@
 import './App.css';
 import Header from './components/header';
-import {} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 
 function App() {
   return( 
-  
-    <Header/>
-    
+    <Router>
+      <Header/>
+    </Router>
   )
 }
 

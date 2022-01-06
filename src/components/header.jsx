@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../images/logo2.png";
-import {Link} from "react-router";
+import {Link} from "react-router-dom";
 function Header() {
     return(
         <div>
@@ -8,10 +8,10 @@ function Header() {
         <img src={logo} alt=""/>
         <div class="header">
             <ul >
-            <li class="header-home hvr-underline-from-left"><a href="index.php">Home</a></li>
-            <li class="header-item hvr-underline-from-left"><a href="aktualnosci.php">Aktualności</a></li>
-            <li class="header-item hvr-underline-from-left"><a href="ogloszenia.php">Ogłoszenia</a></li>
-            <li id="login_btn" class="header-item hvr-underline-from-left">Zaloguj</li>
+            <li class="header-home hvr-underline-from-left"><Link to="/">Home</Link></li>
+            <li class="header-item hvr-underline-from-left"><Link to="/aktualnosci">Aktualności</Link></li>
+            <li class="header-item hvr-underline-from-left"><Link to="/ogloszenia">Ogłoszenia</Link></li>
+            <li class="header-item hvr-underline-from-left"><Link to="/zaloguj">Zaloguj</Link></li>
             </ul>
         </div>
         </div>

@@ -22,14 +22,14 @@ class Header extends React.Component {
     render(){
     return(
         <div>
-        <div class="header-wrapper">
+        <div className="header-wrapper">
         <img src={logo} alt=""/>
-        <div class="header">
+        <div className="header">
             <ul>
                 
                 {routes.map(route => (
                     <li 
-                    class={route.class}
+                    className={route.class}
                     key={route.text}
                     currentButton={route.text}
                     onClick={this.switchCurrent}
@@ -45,16 +45,16 @@ class Header extends React.Component {
             </ul>
         </div>
         </div>
-        <div class="mobile-header-logo">
+        <div className="mobile-header-logo">
                <img src={logo} alt=""/>
             </div>
-        <div class="header-wrapper-mobile hide-menu">
+        <div className="header-wrapper-mobile hide-menu">
             
-        <ul class="mobile-header">
+        <ul className="mobile-header">
                 
                 {routes.map(route => (
                     <li 
-                    class="mobile-items header-item hvr-underline-from-left"
+                    className="mobile-items header-item hvr-underline-from-left"
                     key={route.text}
                     activeStyle={{Color:'gold'}}
                     exact
@@ -68,7 +68,7 @@ class Header extends React.Component {
                 ))}
                 
             </ul>
-            <div id="open" class="header-wrapper-open">MENU<i class="pulse fas fa-angle-down" id="arrow"></i>
+            <div id="open" className="header-wrapper-open">MENU<i className="pulse fas fa-angle-down" id="arrow"></i>
             </div>
         </div>
         </div>

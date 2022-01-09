@@ -1,9 +1,10 @@
 import React from "react";
 import logo from "../images/logo2.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import $ from 'jquery';
 
 const routes = [
-    { path: "/", text: "Home", class: "header-home hvr-underline-from-left" },
+    { path: "/", text: "Home", class: "header-item hvr-underline-from-left" },
     { path: "/Aktualnosci", text: "Aktualności", class: "header-item hvr-underline-from-left" },
     { path: "/Ogloszenia", text: "Ogłoszenia", class: "header-item hvr-underline-from-left" },
     { path: "/Zaloguj", text: "Zaloguj", class: "header-item hvr-underline-from-left" }
@@ -12,13 +13,9 @@ const routes = [
 class Header extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { currentButton: " " };
-      this.switchCurrent = this.switchCurrent.bind(this);
+      this.state = { currentButton: null };
       
-    }
-        switchCurrent(){
-            console.log(this.state)
-        };
+    };
     render(){
     return(
         <div>
@@ -32,16 +29,17 @@ class Header extends React.Component {
                     className={route.class}
                     key={route.text}
                     currentButton={route.text}
-                    onClick={this.switchCurrent}
+                   // onClick={() => this.setState({ currentButton: route.text })}
                     >
-                    <Link
+                    <NavLink
                     to={route.path}
+                    className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                     >
                         {route.text}
-                    </Link>
+                    </NavLink>
                     </li>
                 ))}
-                
+                {this.state.currentButton}
             </ul>
         </div>
         </div>
@@ -59,21 +57,30 @@ class Header extends React.Component {
                     activeStyle={{Color:'gold'}}
                     exact
                     >
-                    <Link
+                    <NavLink
                     to={route.path}
                     >
                         {route.text}
-                    </Link>
+                    </NavLink>
                     </li>
                 ))}
                 
             </ul>
-            <div id="open" className="header-wrapper-open">MENU<i className="pulse fas fa-angle-down" id="arrow"></i>
+            <div id="open" 
+            onClick={() => open()} 
+            >MENU<i className="pulse fas fa-angle-down" id="arrow"></i>
             </div>
         </div>
         </div>
     );
 }
 }
+
+      function open() {
+      $("#arrow").toggleClass("arrow-rotate");
+      $("#arrow").removeClass("pulse");
+      $(".header-wrapper-mobile").toggleClass("show-menu hide-menu");
+    };
+
 
 export default Header;

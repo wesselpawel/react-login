@@ -4,42 +4,49 @@ import { NavLink } from "react-router-dom";
 import $ from 'jquery';
 
 const routes = [
-    { path: "/", text: "Home", class: "header-item hvr-underline-from-left" },
-    { path: "/Aktualnosci", text: "Aktualności", class: "header-item hvr-underline-from-left" },
-    { path: "/Ogloszenia", text: "Ogłoszenia", class: "header-item hvr-underline-from-left" },
-    { path: "/Zaloguj", text: "Zaloguj", class: "header-item hvr-underline-from-left" }
+    
+    { path: "/", text: "Home", class: "header-item hvr-underline-from-left", id: "", },
+    { path: "/Aktualnosci", text: "Aktualności", class: "header-item hvr-underline-from-left", id: "", },
+    { path: "/Ogloszenia", text: "Ogłoszenia", class: "header-item hvr-underline-from-left", id: "", },
 ];
 
 class Header extends React.Component {
+    
     constructor(props) {
       super(props);
-      this.state = { currentButton: null };
-      
+      this.state = { currentPath: null };
+     
     };
     render(){
     return(
-        <div>
+    <div>
         <div className="header-wrapper">
         <img src={logo} alt=""/>
         <div className="header">
             <ul>
-                
                 {routes.map(route => (
-                    <li 
-                    className={route.class}
-                    key={route.text}
-                    currentButton={route.text}
-                   // onClick={() => this.setState({ currentButton: route.text })}
-                    >
-                    <NavLink
-                    to={route.path}
-                    className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                    >
-                        {route.text}
-                    </NavLink>
-                    </li>
+                    
+                        <li 
+                        className={route.class}
+                        key={route.text}
+                        currentPath={route.path}
+                        onClick={route.id}
+                        >
+                        <NavLink
+                        to={route.path}
+                        className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                        >
+                            {route.text}
+                        </NavLink>
+                        </li>
+                        
+                    
                 ))}
-                {this.state.currentButton}
+                <li
+                className="header-item-zaloguj hvr-underline-from-left"
+                onClick={() => show_login()}
+                >Zaloguj</li>
+                
             </ul>
         </div>
         </div>
@@ -54,7 +61,7 @@ class Header extends React.Component {
                     <li 
                     className="mobile-items header-item hvr-underline-from-left"
                     key={route.text}
-                    activeStyle={{Color:'gold'}}
+                    inactiveStyle={{Color:'gold'}}
                     exact
                     >
                     <NavLink
@@ -64,23 +71,32 @@ class Header extends React.Component {
                     </NavLink>
                     </li>
                 ))}
+                <li
+                className="header-item hvr-underline-from-left"
                 
+                >Zaloguj</li>
             </ul>
+            
             <div id="open" 
             onClick={() => open()} 
             >MENU<i className="pulse fas fa-angle-down" id="arrow"></i>
             </div>
         </div>
-        </div>
-    );
-}
-}
+    </div>    
+    );}}
 
-      function open() {
-      $("#arrow").toggleClass("arrow-rotate");
-      $("#arrow").removeClass("pulse");
-      $(".header-wrapper-mobile").toggleClass("show-menu hide-menu");
+    function open() {
+        $("#arrow").toggleClass("arrow-rotate");
+        $("#arrow").removeClass("pulse");
+        $(".header-wrapper-mobile").toggleClass("show-menu hide-menu");
     };
-
+    
+    function show_login(){
+        $('#login_circle').addClass('visible-flex');
+        $('#login_circle').removeClass('invisible');
+        $('#login_circle').addClass('appear');
+        $('#login_circle').removeClass('dissapear');
+    };
+    
 
 export default Header;

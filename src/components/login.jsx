@@ -56,7 +56,7 @@ class Login extends React.Component {
                 <div 
                 onClick={() => close()}
                 className="button-close">
-                    <p>Zamknij</p>
+                    <p>zamknij</p>
                 </div>
                     
                 <div
@@ -65,7 +65,7 @@ class Login extends React.Component {
                 className="button-register"
                 
                 >
-                    <p>Rejestracja</p>
+                    <p>rejestracja</p>
                 </div>
             </div>
         </div>
